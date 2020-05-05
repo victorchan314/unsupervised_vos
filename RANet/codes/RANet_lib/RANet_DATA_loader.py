@@ -80,7 +80,7 @@ class DAVIS2017_loader(data.Dataset):
                 #     with open(self.root + 'ImageSets/' + self.years + '/val.txt') as f:
                 #         SetsTxts2 = f.readlines()
                 #     SetsTxts = SetsTxts + SetsTxts2
-                Dirs = [self.root + 'JPEGImages/480p/' + name[0:-1] for name in SetsTxts]
+                Dirs = [self.root + 'JPEGImages/480p/' + name.split("/")[7] for name in SetsTxts]
                 Dirs.sort()
                 for dir in Dirs:
                     files = glob(dir + '/*.*')
