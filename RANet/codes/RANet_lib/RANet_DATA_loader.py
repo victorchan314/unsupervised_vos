@@ -67,13 +67,14 @@ class DAVIS2017_loader(data.Dataset):
             self.root = DP['root']
             if DP['reading_type'] in ['SVOS', 'SVOS-YTB']:
                 self.years = DP['year']
+                self.res = DP["res"]
                 if DP['mode'] in ['test', '16val', '17val', 'YTB18']:
                     Set = '/val.txt'
                 elif DP['mode'] in ['16all']:
                     Set = '/trainval.txt'
                 elif DP['mode'] in ['test_dev', '17test_dev']:
                     Set = '/test-dev.txt'
-                with open(self.root + 'ImageSets/' + self.years + Set) as f:
+                with open(self.root + 'ImageSets/' + self.res + Set) as f:
                     SetsTxts = f.readlines()
                 # if DP['mode'] in ['all', 'online_all']:
                 #     with open(self.root + 'ImageSets/' + self.years + '/val.txt') as f:

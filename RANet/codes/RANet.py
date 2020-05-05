@@ -65,9 +65,12 @@ def predict_SVOS(model_cuda=None, params='', add_name='', dataset='16val', save_
     else:
         assert('dataset error')
 
+    res = "480p"
+
     DAVIS = dict(reading_type='SVOS',
                      year=year,
                  root='../datasets/DAVIS/',
+                 res=res,
                  subfolder=['', '', ''],
                  mode=dataset,
                  tar_mode='rep',
