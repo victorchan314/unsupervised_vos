@@ -30,6 +30,7 @@ parser.add_argument('--workfolder', default='../models/')
 parser.add_argument('--savePName', default=net_name)
 parser.add_argument('--net_type', default='single_object')
 parser.add_argument('--fp16', default=True)
+parser.add_argument("--dataset_root", default="../datasets/DAVIS/")
 parser.add_argument("--save_root", default="../predictions/RANet_Video_16val")
 print('===> Setting ......')
 opt = parser.parse_args()
@@ -70,7 +71,7 @@ def predict_SVOS(model_cuda=None, params='', add_name='', dataset='16val', save_
 
     DAVIS = dict(reading_type='SVOS',
                      year=year,
-                 root='../datasets/DAVIS/',
+                 root=opt.dataset_root,
                  res=res,
                  subfolder=['', '', ''],
                  mode=dataset,
