@@ -30,6 +30,7 @@ parser.add_argument('--workfolder', default='../models/')
 parser.add_argument('--savePName', default=net_name)
 parser.add_argument('--net_type', default='single_object')
 parser.add_argument('--fp16', default=True)
+parser.add_argument("--save_root", default="../predictions/RANet_Video_16val")
 print('===> Setting ......')
 opt = parser.parse_args()
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
@@ -98,7 +99,9 @@ def predict_SVOS(model_cuda=None, params='', add_name='', dataset='16val', save_
 
 if __name__ == '__main__':
 
-    predict_SVOS(params='RANet_video_single.pth', dataset='16val', save_root='../predictions/RANet_Video_16val')
+    #predict_SVOS(params='RANet_video_single.pth', dataset='16val', save_root='../predictions/RANet_Video_16val')
+
+    predict_SVOS(params='RANet_video_single.pth', dataset='16val', save_root=opt.save_root)
 
     # predict_SVOS(params='RANet_image_single.pth', dataset='16all', save_root='../predictions/RANet_Image_16all')
 
