@@ -131,7 +131,7 @@ class Rand_num(object):
 def PAD_transform(outSize, random=False):
     if random == False:
         return Compose([
-            #Pad_to_size_list(outSize),
+            Pad_to_size_list(outSize),
             ToTensor_list(),
             Normalize_adapt_list(mean=[0.485, 0.456, 0.406],
                       std=[0.229, 0.224, 0.225])
