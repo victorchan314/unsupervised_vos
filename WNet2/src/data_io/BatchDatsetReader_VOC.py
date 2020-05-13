@@ -100,9 +100,9 @@ def download_if_no_data(dir_path, url_name):
     return
 
 def create_BatchDatset():
-    print("Download if not VOC2012 exist...")
+    #print("Download if not VOC2012 exist...")
     url = 'http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar'
-    download_if_no_data('./data/', url)
+    #download_if_no_data('./data/', url)
     
     print("Initializing VOC2012 Batch Dataset Reader...")
     data_record = read_data_record('./data/VOCdevkit/VOC2012')
