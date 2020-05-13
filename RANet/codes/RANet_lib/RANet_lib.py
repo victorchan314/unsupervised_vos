@@ -160,9 +160,7 @@ def test_SVOS_Video_batch(data_loader, model, save_root, threshold=0.5, single_o
                     img.putpalette(palette)
                     #img.crop(((ms[0] - ss[0]) / 2, (ms[1] - ss[1]) / 2, (ms[0] - ss[0]) / 2 + ss[0],
                     #    (ms[1] - ss[1]) / 2 + ss[1])).resize(ss).save(save_path + fname.split('.')[0] + add_name + '.png', palette=palette)
-                    img.crop((192, 0, 672, 480))
-                    img.resize((224, 224))
-                    img.save(save_path + fname.split('.')[0] + add_name + '.png', palette=palette)
+                    img.crop((192, 0, 672, 480)).resize((224, 224)).save(save_path + fname.split('.')[0] + add_name + '.png', palette=palette)
                     # print(save_path + fname.split('.')[0])
             del(Frames_batch)
             Frames_batch = init_Frame(batchsize)
