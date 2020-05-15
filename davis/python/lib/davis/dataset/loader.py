@@ -49,12 +49,13 @@ transform = transforms.Compose([
 
 def resize(img, size=224):
     ndim = img.ndim
+    dtype = img.dtype
     if ndim == 2:
         img = img[..., np.newaxis]
 
-    img_tensor = torch.from_numpy(np.transpose(img, axes=(2, 0, 1)))
+    img_tensor = torch.from_numpy(np.transpose(img, axes=(2, 0, 1))).to(torch.uint8)
     img_transformed = transform(img_tensor)
-    img = np.transpose(img_transformed.cpu().detach().numpy(), axes=(1, 2, 0))
+    img = np.transpose(img_transformed.cpu().detach().numpy(), axes=(1, 2, 0)).astype(dtype)
 
     if ndim == 2:
         img = img[..., 0]
