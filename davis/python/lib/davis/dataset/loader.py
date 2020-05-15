@@ -34,13 +34,38 @@ __version__ = '1.0.0'
 import os
 import copy
 import skimage.io
+import skimage.transform
 import numpy as np
 
 from davis import log
 from davis.measures import db_eval_boundary,db_eval_iou,db_eval_t_stab
 
+def resize(img, size=224):
+    height, width = img.shape[:2]
+    scale_factor = size / min(height, width)
+    img = skimage.transform.rescale(img, scale_factor)
+
+    height, width = img.shape[:2]
+    height_center = height // 2
+    width_center = width // 2
+    img = img[height_center - size // 2:height_center + size // 2, width_center - size // 2:width_center + size // 2, :]
+
+    return img
+
 def _load_annotation(fname,img_num=0):
 	return skimage.io.imread(fname,as_grey=True)
+
+def _load_annotation_resize(fname,img_num=0):
+	img = _load_annotation(fname,img_num=img_num)
+        img = resize(img)
+
+        return img
+
+def _load_resize(fname,img_num=0):
+	img = skimage.io.imread(fname)
+        img = resize(img)
+
+        return img
 
 class DAVISSegmentationLoader(object):
 	""" Helper class for accessing the DAVIS dataset.
@@ -87,10 +112,10 @@ class DAVISSegmentationLoader(object):
 		#########################################
 		# LOAD IMAGES AND MASKS
 		#########################################
-		self._images = skimage.io.ImageCollection(self.images_dir+"/*%s"%self._ext_im)
+		self._images = skimage.io.ImageCollection(self.images_dir+"/*%s"%self._ext_im, load_func=_load_resize)
 
 		self._masks = skimage.io.ImageCollection(self.masks_dir+"/*%s"%self._ext_an,
-				load_func=_load_annotation)
+				load_func=_load_annotation_resize)
 
 		#assert len(self._masks) != 0 and len(self._images) != 0
 		masks_frames = map(lambda fn:
