@@ -71,6 +71,7 @@ def _load_annotation(fname,img_num=0):
 	return skimage.io.imread(fname,as_grey=True)
 
 def _load_annotation_resize(fname,img_num=0):
+        print(fname)
 	img = _load_annotation(fname,img_num=img_num)
         print("ENTERED")
         boo = False
