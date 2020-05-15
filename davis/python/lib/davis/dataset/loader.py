@@ -68,12 +68,18 @@ def _load_annotation(fname,img_num=0):
 
 def _load_annotation_resize(fname,img_num=0):
 	img = _load_annotation(fname,img_num=img_num)
+        print("YO")
+        print(img.shape)
+        print("YOEND")
         img = resize(img)
 
         return img
 
 def _load_resize(fname,img_num=0):
 	img = skimage.io.imread(fname)
+        print("bZOYO")
+        print(img.shape)
+        print("bXOYOEN")
         img = resize(img)
 
         return img
