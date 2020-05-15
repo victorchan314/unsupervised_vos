@@ -132,6 +132,7 @@ class DAVISSegmentationLoader(object):
 		#########################################
                 print("OSNDFOS")
 		self._images = skimage.io.ImageCollection(self.images_dir+"/*%s"%self._ext_im, load_func=_load_resize)
+                print(1/0)
                 print(self._images)
                 print("TWOTWOS")
 
