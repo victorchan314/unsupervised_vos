@@ -68,7 +68,10 @@ def _load_annotation(fname,img_num=0):
 def _load_annotation_resize(fname,img_num=0):
         print("ENTERED")
 	img = _load_annotation(fname,img_num=img_num)
+        print(img.max())
         img = resize(img)
+        print(img.max())
+        print("EXIT")
 
         return img
 
