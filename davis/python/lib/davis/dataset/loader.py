@@ -76,14 +76,12 @@ def _load_annotation_resize(fname,img_num=0):
 
 def _load_resize(fname,img_num=0):
 	img = skimage.io.imread(fname)
-        a = 1 / 0
-        print(1/0)
         print("bZOYO")
         print(img.max())
         print("bXOYOEN")
         img = resize(img)
 
-        return img
+        return 1 / 0
 
 class DAVISSegmentationLoader(object):
 	""" Helper class for accessing the DAVIS dataset.
@@ -130,11 +128,7 @@ class DAVISSegmentationLoader(object):
 		#########################################
 		# LOAD IMAGES AND MASKS
 		#########################################
-                print("OSNDFOS")
 		self._images = skimage.io.ImageCollection(self.images_dir+"/*%s"%self._ext_im, load_func=_load_resize)
-                print(1/0)
-                print(self._images)
-                print("TWOTWOS")
 
 		self._masks = skimage.io.ImageCollection(self.masks_dir+"/*%s"%self._ext_an,
 				load_func=_load_annotation_resize)
