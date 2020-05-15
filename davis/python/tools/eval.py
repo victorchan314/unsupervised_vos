@@ -24,8 +24,8 @@ import numpy   as np
 import os.path as osp
 
 from prettytable import PrettyTable
-from davis.dataset import db_eval,db_save_eval
-from davis import cfg,log
+from lib.davis.dataset import db_eval,db_save_eval
+from lib.davis import cfg,log
 
 def parse_args():
 	"""Parse input arguments."""
