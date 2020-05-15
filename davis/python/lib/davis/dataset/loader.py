@@ -77,7 +77,7 @@ def _load_annotation_resize(fname,img_num=0):
         print(img.max())
         if img.max() > .10 and img.max() < .2:
             boo = True
-            cv2.imwrite("TEst.png", img)
+            cv2.imwrite("TEst.png", 255*img)
         img = resize(img)
         print(img.max())
         print("EXIT")
