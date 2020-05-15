@@ -34,21 +34,23 @@ __version__ = '1.0.0'
 import os
 import copy
 import skimage.io
-import skimage.transform
 import numpy as np
+import torch
+import torchvision.transforms as transforms
 
 from davis import log
 from davis.measures import db_eval_boundary,db_eval_iou,db_eval_t_stab
 
-def resize(img, size=224):
-    height, width = img.shape[:2]
-    scale_factor = size / min(height, width)
-    img = skimage.transform.rescale(img, scale_factor)
+transform = transforms.Compose([
+    transforms.ToPILImage(),
+    transforms.Resize(224),
+    transforms.CenterCrop(224),
+    transforms.ToTensor()]) 
 
-    height, width = img.shape[:2]
-    height_center = height // 2
-    width_center = width // 2
-    img = img[height_center - size // 2:height_center + size // 2, width_center - size // 2:width_center + size // 2, :]
+def resize(img, size=224):
+    img_tensor = torch.from_numpy(np.transpose(img, axes=(2, 0, 1)))
+    img_transformed = transform(img_tensor)
+    img = np.transpose(img_transformed.cpu().detach().numpy(), axes=(1, 2, 0))
 
     return img
 
