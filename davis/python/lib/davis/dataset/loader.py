@@ -243,7 +243,6 @@ class DAVISAnnotationLoader(DAVISSegmentationLoader):
 		# Strip of first and last frame if available
 		segmentation = db_segmentation._masks[
 				1-db_segmentation._frames[0]:len(annotations)+1-db_segmentation._frames[0]]
-                print(1/0)
 
 		assert len(annotations) == len(segmentation)
 

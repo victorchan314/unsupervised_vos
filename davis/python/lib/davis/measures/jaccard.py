@@ -23,8 +23,15 @@ def db_eval_iou(annotation,segmentation):
 
  """
 
+        print("HELO")
+        print(annotation.shape)
+        print(segmentation.shape)
+        print(annotation)
+        print(segmentation)
 	annotation   = annotation.astype(np.bool)
 	segmentation = segmentation.astype(np.bool)
+        print("HELO")
+        print(1/0)
 
 	if np.isclose(np.sum(annotation),0) and np.isclose(np.sum(segmentation),0):
 		return 1
