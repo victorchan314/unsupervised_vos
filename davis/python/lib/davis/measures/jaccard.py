@@ -24,6 +24,8 @@ def db_eval_iou(annotation,segmentation):
  """
 
         print("HELO")
+        print(annotation.max())
+        print(segmentation.max())
         print(annotation.shape)
         print(segmentation.shape)
         print(annotation)
