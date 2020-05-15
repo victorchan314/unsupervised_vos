@@ -53,7 +53,6 @@ def resize(img, size=224):
     if ndim == 2:
         img = img[..., np.newaxis]
 
-    print(img.max())
     img_tensor = torch.from_numpy(np.transpose(img, axes=(2, 0, 1))).to(torch.uint8)
     img_transformed = transform(img_tensor)
     img = np.transpose(img_transformed.cpu().detach().numpy(), axes=(1, 2, 0)).astype(dtype)
@@ -69,7 +68,7 @@ def _load_annotation(fname,img_num=0):
 def _load_annotation_resize(fname,img_num=0):
 	img = _load_annotation(fname,img_num=img_num)
         print("YO")
-        print(img.shape)
+        print(img.max())
         print("YOEND")
         img = resize(img)
 
@@ -78,7 +77,7 @@ def _load_annotation_resize(fname,img_num=0):
 def _load_resize(fname,img_num=0):
 	img = skimage.io.imread(fname)
         print("bZOYO")
-        print(img.shape)
+        print(img.max())
         print("bXOYOEN")
         img = resize(img)
 
