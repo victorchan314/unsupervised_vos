@@ -67,8 +67,6 @@ def _load_annotation(fname,img_num=0):
 
 def _load_annotation_resize(fname,img_num=0):
 	img = _load_annotation(fname,img_num=img_num)
-        print(img.shape)
-        print(img.max())
         img = resize(img)
 
         return img
@@ -125,12 +123,9 @@ class DAVISSegmentationLoader(object):
 		# LOAD IMAGES AND MASKS
 		#########################################
 		self._images = skimage.io.ImageCollection(self.images_dir+"/*%s"%self._ext_im, load_func=_load_resize)
-                print(self._images.files)
 
 		self._masks = skimage.io.ImageCollection(self.masks_dir+"/*%s"%self._ext_an,
 				load_func=_load_annotation_resize)
-                print(self._masks.files)
-                print(1/0)
 
 		#assert len(self._masks) != 0 and len(self._images) != 0
 		masks_frames = map(lambda fn:
@@ -243,6 +238,7 @@ class DAVISAnnotationLoader(DAVISSegmentationLoader):
 				cfg,sequence,None,ext_im,ext_an,load_func)
 
 	def _eval(self,db_segmentation,eval_func,measure,scale=1):
+                print(1/0)
 		annotations = self._masks[1:-1]
 
 		# Strip of first and last frame if available
