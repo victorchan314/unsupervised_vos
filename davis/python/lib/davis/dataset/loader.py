@@ -128,7 +128,10 @@ class DAVISSegmentationLoader(object):
 		#########################################
 		# LOAD IMAGES AND MASKS
 		#########################################
+                print("OSNDFOS")
 		self._images = skimage.io.ImageCollection(self.images_dir+"/*%s"%self._ext_im, load_func=_load_resize)
+                print(self._images)
+                print("TWOTWOS")
 
 		self._masks = skimage.io.ImageCollection(self.masks_dir+"/*%s"%self._ext_an,
 				load_func=_load_annotation_resize)
