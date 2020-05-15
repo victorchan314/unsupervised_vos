@@ -71,7 +71,7 @@ def sc_compute(Bsamp,Tsamp,mean_dist,nbins_theta,nbins_r,r_inner,r_outer,out_vec
 	count = 0
 	for n in range(nsamp):
 		fzn=fz[n]&in_vec
-		Sn = np.zeros((nbins_theta,nbins_r))
+		Sn = np.zeros((int(nbins_theta),int(nbins_r)))
 		coords = np.hstack((theta_array_q[n,fzn].reshape(-1,1),
 			r_array_q[n,fzn].astype(np.int).reshape(-1,1)))
 
