@@ -13,7 +13,6 @@
 """
 
 import time
-from davis import log
 
 class Timer(object):
 	"""docstring for Timer"""
