@@ -256,13 +256,13 @@ class DAVISAnnotationLoader(DAVISSegmentationLoader):
 
 		if measure == 'T':
 			magic_number = 5.0
-                        print("SFSDFIO")
 			X = np.array([np.nan]+[eval_func(an,sg)*magic_number for an,sg
 				in zip(segmentation[:-1],segmentation[1:])] + [np.nan])
-                        print(1/0)
 		else:
+                        print("SFSDFIO")
 			X = np.array([np.nan]+[eval_func(an,sg) for an,sg
 					in zip(annotations,segmentation)] + [np.nan])
+                        print(1/0)
 
 		from utils import db_statistics
 		M,O,D = db_statistics(X)
