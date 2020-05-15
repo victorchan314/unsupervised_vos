@@ -72,7 +72,7 @@ def _load_annotation(fname,img_num=0):
 def _load_annotation_resize(fname,img_num=0):
 	img = _load_annotation(fname,img_num=img_num)
         if img.max() > .1 and img.max() < .2:
-            img = img / img.max() * 255
+            img = np.asarray(img / img.max() * 255, dtype=np.uint8)
         img = resize(img)
 
         return img
