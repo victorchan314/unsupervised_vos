@@ -249,4 +249,4 @@ class DAVISAnnotationLoader(DAVISSegmentationLoader):
 		elif measure=='T':
 			return self._eval(db_segmentation,db_eval_t_stab,measure)
 		else:
-			raise Exception, "Unknown measure=[%s]. Valid options are measure={J,F,T}"%measure
+			raise Exception("Unknown measure=[%s]. Valid options are measure={J,F,T}"%measure)
