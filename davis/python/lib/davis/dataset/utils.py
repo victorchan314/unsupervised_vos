@@ -276,9 +276,13 @@ def db_save_techniques(db_eval_dict,filename=cfg.FILES.DB_BENCHMARK):
 		f.write(yaml.dump(db_techniques))
 
 def db_eval_view(db_eval_dict,technique,
-		summary=False,eval_set='all'):
+		summary=False,eval_set='all',
+                sequence=None):
 
-	db_sequences = db_read_sequences()
+        if sequence is None:
+            db_sequences = db_read_sequences()
+        else:
+            db_sequences = sequence
 
 	from prettytable import PrettyTable as ptable
 	table = ptable(["Sequence"] + ['J(M)','J(O)','J(D)','F(M)','F(O)','F(D)','T(M)'])
@@ -289,14 +293,13 @@ def db_eval_view(db_eval_dict,technique,
 
 	X = np.hstack(X)[:,:7]
 	if not summary:
-                print("HI")
 		for s,row in zip(db_sequences,X):
-			if eval_set == 'all' or s.set == eval_set:
-				table.add_row([s.name]+ ["{: .3f}".format(n) for n in row])
+			#if eval_set == 'all' or s.set == eval_set:
+                        table.add_row([s.name]+ ["{: .3f}".format(n) for n in row])
 
 
 	set_ids = [seq_id for seq_id,seq in enumerate(db_sequences)
-			if eval_set == 'all' or seq.set == eval_set]
+			if True or eval_set == 'all' or seq.set == eval_set]
 
 	print set_ids
 

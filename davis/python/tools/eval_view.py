@@ -67,4 +67,5 @@ if __name__ == '__main__':
 	log.info("Displaying evaluation of: %s"%osp.basename(args.input))
 
 	db_eval_view(db_eval_dict,
-			technique,args.summary,args.eval_set)
+			technique,args.summary,args.eval_set,
+                        sequence=sequence)
