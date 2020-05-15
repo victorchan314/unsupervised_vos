@@ -126,6 +126,8 @@ class DAVISSegmentationLoader(object):
 
 		self._masks = skimage.io.ImageCollection(self.masks_dir+"/*%s"%self._ext_an,
 				load_func=_load_annotation_resize)
+                print(len(self._images))
+                print(len(self._masks))
 
 		#assert len(self._masks) != 0 and len(self._images) != 0
 		masks_frames = map(lambda fn:
