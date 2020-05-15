@@ -53,6 +53,7 @@ def resize(img, size=224):
     if ndim == 2:
         img = img[..., np.newaxis]
 
+    print(img.max())
     img_tensor = torch.from_numpy(np.transpose(img, axes=(2, 0, 1))).to(torch.uint8)
     img_transformed = transform(img_tensor)
     img = np.transpose(img_transformed.cpu().detach().numpy(), axes=(1, 2, 0)).astype(dtype)
@@ -239,7 +240,6 @@ class DAVISAnnotationLoader(DAVISSegmentationLoader):
 
 	def _eval(self,db_segmentation,eval_func,measure,scale=1):
 		annotations = self._masks[1:-1]
-		print(len(annotations))
 
 		# Strip of first and last frame if available
 		segmentation = db_segmentation._masks[
