@@ -37,7 +37,6 @@ import skimage.io
 import numpy as np
 import torch
 import torchvision.transforms as transforms
-import cv2
 
 from davis import log
 from davis.measures import db_eval_boundary,db_eval_iou,db_eval_t_stab
@@ -71,19 +70,10 @@ def _load_annotation(fname,img_num=0):
 	return skimage.io.imread(fname,as_grey=True)
 
 def _load_annotation_resize(fname,img_num=0):
-        print(fname)
 	img = _load_annotation(fname,img_num=img_num)
-        print("ENTERED")
-        boo = False
-        print(img.max())
-        if img.max() > .10 and img.max() < .2:
-            boo = True
-            cv2.imwrite("TEst.png", 255*img)
+        if img.max() > .1 and img.max() < .2:
+            img = img / img.max()
         img = resize(img)
-        print(img.max())
-        print("EXIT")
-        if boo:
-            print(1/0)
 
         return img
 
