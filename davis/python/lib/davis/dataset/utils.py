@@ -295,7 +295,8 @@ def db_eval_view(db_eval_dict,technique,
 	if not summary:
 		for s,row in zip(db_sequences,X):
 			#if eval_set == 'all' or s.set == eval_set:
-                        table.add_row([s.name]+ ["{: .3f}".format(n) for n in row])
+                        #table.add_row([s.name]+ ["{: .3f}".format(n) for n in row])
+                        table.add_row([s]+ ["{: .3f}".format(n) for n in row])
 
 
 	set_ids = [seq_id for seq_id,seq in enumerate(db_sequences)
