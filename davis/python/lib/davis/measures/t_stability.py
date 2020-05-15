@@ -67,7 +67,7 @@ def sc_compute(Bsamp,Tsamp,mean_dist,nbins_theta,nbins_r,r_inner,r_outer,out_vec
 	theta_array_q = 1+np.floor(theta_array_2/(2*np.pi/nbins_theta))
 
 	nbins=nbins_theta*nbins_r
-	BH=np.zeros((nsamp,nbins))
+	BH=np.zeros((nsamp,int(nbins)))
 	count = 0
 	for n in range(nsamp):
 		fzn=fz[n]&in_vec
