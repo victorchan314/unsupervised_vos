@@ -54,13 +54,12 @@ def resize(img, size=224):
     if ndim == 2:
         img = img[..., np.newaxis]
 
-#    img = img / maximum * 255
+    img = img / maximum * 255
 
     img_tensor = torch.from_numpy(np.transpose(img, axes=(2, 0, 1))).to(torch.uint8)
     img_transformed = transform(img_tensor)
-    img = np.transpose(img_transformed.cpu().detach().numpy(), axes=(1, 2, 0)).astype(dtype)
-    #img = np.transpose(255 * img_transformed.cpu().detach().numpy(), axes=(1, 2, 0)).astype(dtype)
-    #img = img / 255 * maximum
+    img = np.transpose(255 * img_transformed.cpu().detach().numpy(), axes=(1, 2, 0)).astype(dtype)
+    img = img / 255 * maximum
 
     if ndim == 2:
         img = img[..., 0]
@@ -72,8 +71,8 @@ def _load_annotation(fname,img_num=0):
 
 def _load_annotation_resize(fname,img_num=0):
 	img = _load_annotation(fname,img_num=img_num)
-#        if img.max() > .1 and img.max() < .2:
-#            img = np.asarray(img / img.max() * 255, dtype=np.uint8)
+        if img.max() > .1 and img.max() < .2:
+            img = np.asarray(img / img.max() * 255, dtype=np.uint8)
         img = resize(img)
 
         return img

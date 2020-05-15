@@ -124,7 +124,6 @@ def db_eval_t_stab(fgmask,ground_truth,timing=True):
 	upCs1 = contour_upsample(Cs1,cont_th_up)
 	upCs2 = contour_upsample(Cs2,cont_th_up)
 
-        print(1/0)
 	scs1,_=sc_compute(upCs1.T,np.zeros((1,upCs1.shape[0])),None,
 			nbins_theta,nbins_r,r_inner,r_outer,np.zeros((1,upCs1.shape[0])))
 
