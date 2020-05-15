@@ -289,6 +289,7 @@ def db_eval_view(db_eval_dict,technique,
 
 	X = np.hstack(X)[:,:7]
 	if not summary:
+                print("HI")
 		for s,row in zip(db_sequences,X):
 			if eval_set == 'all' or s.set == eval_set:
 				table.add_row([s.name]+ ["{: .3f}".format(n) for n in row])
