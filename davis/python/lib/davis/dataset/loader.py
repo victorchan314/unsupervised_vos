@@ -76,6 +76,8 @@ def _load_annotation_resize(fname,img_num=0):
 
 def _load_resize(fname,img_num=0):
 	img = skimage.io.imread(fname)
+        a = 1 / 0
+        print(1/0)
         print("bZOYO")
         print(img.max())
         print("bXOYOEN")
