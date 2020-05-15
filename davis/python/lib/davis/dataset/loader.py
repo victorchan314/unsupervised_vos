@@ -54,7 +54,8 @@ def resize(img, size=224):
     if ndim == 2:
         img = img[..., np.newaxis]
 
-    img = img / maximum * 255
+    if maximum != 0:
+        img = img / maximum * 255
 
     img_tensor = torch.from_numpy(np.transpose(img, axes=(2, 0, 1))).to(torch.uint8)
     img_transformed = transform(img_tensor)
