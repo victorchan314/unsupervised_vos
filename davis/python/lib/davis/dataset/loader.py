@@ -238,8 +238,8 @@ class DAVISAnnotationLoader(DAVISSegmentationLoader):
 				cfg,sequence,None,ext_im,ext_an,load_func)
 
 	def _eval(self,db_segmentation,eval_func,measure,scale=1):
-                print(1/0)
 		annotations = self._masks[1:-1]
+                print(1/0)
 
 		# Strip of first and last frame if available
 		segmentation = db_segmentation._masks[
